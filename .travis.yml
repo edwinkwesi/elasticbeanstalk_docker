@@ -1,0 +1,23 @@
+sudo: required
+language: generic
+
+services:
+  - docker 
+
+before_install: 
+  - docker build -t docker-react-nginx -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true docker-react-nginx npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-2"
+  app: "react-travis-ci"
+  env: "Reacttravisci-env-1"
+  bucket_name: "elasticbeanstalk-eu-west-2-339713089708"
+  bucket_path: "react-travis-ci"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "AWS_SECRET_KEY"  
