@@ -14,7 +14,7 @@ deploy:
   provider: elasticbeanstalk
   region: "eu-west-2"
   app: "react-travis-ci"
-  env: "Reacttravisci-env-1"
+  env: "Reacttravisci-env"
   bucket_name: "elasticbeanstalk-eu-west-2-339713089708"
   bucket_path: "react-travis-ci"
   on:
